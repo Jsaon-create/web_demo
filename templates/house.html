@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table border="1" cellspacing="0" width="1000px">
+        <tr>
+            <th>南京房源描述</th>
+            <th>总价</th>
+            <th>每平方价格</th>
+        </tr>
+        {% for i in house %}
+            <tr>
+                <td>{{ i.title }}</td>
+                <td>{{ i.total_price }}</td>
+                <td>{{ i.each_price }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div align="center">
+        <a href="/house/">首页</a>
+        {% if pre_page >= 1 %}
+            <a href="/house?num={{ pre_page }}">上一页</a>
+        {% endif %}
+        <a href="/house?num={{ pre_page }}">{{ pre_page }}</a>
+        <span>{{ now_page }}</span>
+        <a href="/house?num={{ next_page }}">{{ next_page }}</a>
+        {% if next_page <= end_page %}
+            <a href="/house?num={{ next_page }}">下一页</a>
+            <a href="/house?num={{ end_page }}">尾页</a>
+        {% endif %}
+    </div>
+</body>
+</html>
